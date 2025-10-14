@@ -2,11 +2,11 @@ class BankAccount {
   // TOD0
   double balance;
   // final _accountNumber;
-  final accountName;
+  final String name;
 
   // double get accountNumber => _accountNumber;
 
-  BankAccount(this.balance, this.accountName);
+  BankAccount(this.balance, this.name);
 
   double returnBalance() => balance;
 
@@ -24,16 +24,16 @@ class BankAccount {
 
 class Bank {
   // TOD0
-  late String name;
+  final String name;
   Map<int, BankAccount> bankAccount = {};
 
-  Bank({required String name});
+  Bank({required String name}) : name = name;
 
-  BankAccount createAccount(int accountId, String accountOwner) {
+  BankAccount createAccount(int accountId, String name) {
     if (bankAccount.containsKey(accountId)) {
       throw Exception("This bank account Id already exist.");
     }
-    BankAccount newAccount = BankAccount(0.0, accountOwner);
+    BankAccount newAccount = BankAccount(0.0, name);
     bankAccount[accountId] = newAccount;
 
     return newAccount;
